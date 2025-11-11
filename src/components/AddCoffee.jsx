@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const AddCoffee = () => {
@@ -50,7 +51,10 @@ const AddCoffee = () => {
   };
 
   return (
-    <div className="mx-5">
+    <div className="mx-5 p-10">
+      <button className="btn btn-ghost underline text-lg text-blue-500">
+        <Link to='/'>Back</Link>
+      </button>
       <h2 className="text-center text-3xl mt-5 font-extrabold text-amber-600">
         Add a Coffee
       </h2>
