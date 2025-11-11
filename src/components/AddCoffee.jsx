@@ -1,25 +1,53 @@
 import React from "react";
+import Swal from "sweetalert2";
 
 const AddCoffee = () => {
+  const handleAddCoffee = (event) => {
+    event.preventDefault();
 
-    const handleAddCoffee = event =>{
-        event.preventDefault();
+    const form = event.target;
 
-        const form = event.target;
+    const name = form.name.value;
+    const quantity = form.quantity.value;
+    const supplier = form.supplier.value;
+    const taste = form.taste.value;
+    const category = form.category.value;
+    const details = form.details.value;
+    const photoURL = form.photoURL.value;
 
-        const name = form.name.value;
-        const quantity = form.quantity.value;
-        const supplier = form.supplier.value;
-        const taste = form.taste.value;
-        const category = form.category.value;
-        const details = form.details.value;
-        const photoURL = form.photoURL.value;
+    const newCoffee = {
+      name,
+      quantity,
+      supplier,
+      taste,
+      category,
+      details,
+      photoURL,
+    };
 
-        const newCoffee = {name, quantity, supplier, taste, category, details, photoURL}
+    console.log(newCoffee);
 
-        console.log(newCoffee)
-        
-    }
+    // send data to the server
+    fetch("http://localhost:5000/coffee", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newCoffee),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          Swal.fire({
+            title: "Success!",
+            text: "Coffee Added Successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+      });
+  };
 
   return (
     <div className="mx-5">
@@ -27,7 +55,10 @@ const AddCoffee = () => {
         Add a Coffee
       </h2>
 
-      <form onSubmit={handleAddCoffee} className="bg-orange-300 max-w-xl md:max-w-2xl mx-auto p-6 mt-5 rounded-xl space-y-8">
+      <form
+        onSubmit={handleAddCoffee}
+        className="bg-orange-300 max-w-xl md:max-w-2xl mx-auto p-6 mt-5 rounded-xl space-y-8"
+      >
         {/* Row 1 */}
         <div className="md:flex gap-4 mb-4">
           <div className="w-full">
