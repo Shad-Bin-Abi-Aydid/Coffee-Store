@@ -39,7 +39,7 @@ const AddCoffee = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.acknowledged) {
+        if (data.insertedId) {
           Swal.fire({
             title: "Success!",
             text: "Coffee Added Successfully",
@@ -53,7 +53,7 @@ const AddCoffee = () => {
   return (
     <div className="mx-5 p-10">
       <button className="btn btn-ghost underline text-lg text-blue-500">
-        <Link to='/'>Back</Link>
+        <Link to="/">Back</Link>
       </button>
       <h2 className="text-center text-3xl mt-5 font-extrabold text-amber-600">
         Add a Coffee
@@ -70,6 +70,7 @@ const AddCoffee = () => {
               <span className="label-text">Coffee Name:</span>
             </label>
             <input
+              required
               type="text"
               name="name"
               placeholder="Coffee name"
@@ -82,6 +83,7 @@ const AddCoffee = () => {
               <span className="label-text">Available Quantity:</span>
             </label>
             <input
+              required
               type="text"
               name="quantity"
               placeholder="Quantity"
@@ -97,6 +99,7 @@ const AddCoffee = () => {
               <span className="label-text">Supplier:</span>
             </label>
             <input
+              required
               type="text"
               name="supplier"
               placeholder="Supplier"
@@ -109,6 +112,7 @@ const AddCoffee = () => {
               <span className="label-text">Taste:</span>
             </label>
             <input
+              required
               type="text"
               name="taste"
               placeholder="Taste"

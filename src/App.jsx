@@ -1,9 +1,11 @@
 import { Link, useLoaderData } from "react-router-dom";
 import "./App.css";
 import CoffeeCard from "./components/CoffeeCard";
+import { useState } from "react";
 
 function App() {
-  const coffees = useLoaderData();
+  const loadCoffees = useLoaderData();
+  const [coffees, setCoffees] = useState(loadCoffees);
   console.log(coffees);
 
   return (
@@ -18,7 +20,13 @@ function App() {
       </div>
       <div className="grid md:grid-cols-2 gap-5 w-7xl mx-auto mb-10">
         {coffees.map((coffee) => (
-          <CoffeeCard key={coffee._id} coffee={coffee}></CoffeeCard>
+          <CoffeeCard
+            key={coffee._id}
+            coffee={coffee}
+            onDelete={(id) =>
+              setCoffees(coffees.filter((coffee) => coffee._id !== id))
+            }
+          ></CoffeeCard>
         ))}
       </div>
     </>
