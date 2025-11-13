@@ -19,7 +19,7 @@ const SignUp = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
-        const creationTime = result.user.metadata.creationTime;
+        const creationTime = result.user ?.metadata ?.creationTime;
         const newUser = {
           email,
           name,

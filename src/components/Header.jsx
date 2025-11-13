@@ -2,6 +2,23 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const links = <>
+  <li>
+              <Link to='/'>Home</Link>
+            </li>
+            <li>
+              <Link to='/addCoffee'>Add Coffee</Link>
+            </li>
+            <li>
+              <Link to='/signin'>SignIn</Link>
+            </li>
+            <li>
+              <Link to='/signup'>SignUp</Link>
+            </li>
+            <li>
+              <Link to='/users'>Users</Link>
+            </li>
+  </>
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
@@ -27,37 +44,15 @@ const Header = () => {
             tabIndex="-1"
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
-            <li>
-              <Link to='/'>Home</Link>
-            </li>
-            <li>
-              <Link to='/addCoffee'>Add Coffee</Link>
-            </li>
-            <li>
-              <Link to='/signin'>SignIn</Link>
-            </li>
-            <li>
-              <Link to='/signup'>SignUp</Link>
-            </li>
-           
+            
+           {links}
           </ul>
         </div>
         <a className="btn btn-ghost text-xl">Coffee Store</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li>
-              <Link to='/'>Home</Link>
-            </li>
-            <li>
-              <Link to='/addCoffee'>Add Coffee</Link>
-            </li>
-            <li>
-              <Link to='/signin'>SignIn</Link>
-            </li>
-            <li>
-              <Link to='/signup'>SignUp</Link>
-            </li>
+          {links}
         </ul>
       </div>
       <div className="navbar-end">
