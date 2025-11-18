@@ -56,6 +56,7 @@ const Users = () => {
                 <th>Name</th>
                 <th>Email</th>
                 <th>Create At</th>
+                <th>Last SignIn</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -66,6 +67,7 @@ const Users = () => {
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>{user.creationTime ? user.creationTime : "N/A"}</td>
+                  <td>{user.lastSignInTime ? user.lastSignInTime : "N/A"}</td>
                   <td className="flex gap-3">
                     <button className="btn btn-accent">Edit</button>
                     <button
